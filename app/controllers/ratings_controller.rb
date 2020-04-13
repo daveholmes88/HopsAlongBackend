@@ -7,8 +7,8 @@ class RatingsController < ApplicationController
     end 
 
     def update
-        rating = Rating.all.find(params['id'])
-        rating.update(number: params['rating'], notes: params['notes'])
+        rating = Rating.all.find(params['rating'])
+        rating.update(number: params['number'], notes: params['notes'])
         ratings = Rating.all
         render json: ratings
     end 
