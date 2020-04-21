@@ -25,12 +25,14 @@ class UsersController < ApplicationController
     end
 
     def index
+        breweries = Brewery.all 
+        ratings = Rating.all
         token = request.headers[:Authorization].split(' ')[1]
         decoded_token = JWT.decode token, 'secret', true, { algorithm: 'HS256' }
         user_id = decoded_token[0]['user_id']
         user = User.find(user_id)
         if user 
-            render json: { id: user.id, username: user.username }
+            render json: { user: {id: user.id, username: user.username}, ratings: ratings, breweries: breweries }
         else 
             render json: { error: 'Invalid Credentials' }, status: 401
         end 

@@ -13,7 +13,7 @@ class BreweriesController < ApplicationController
             address: params['address'], 
             city: params['city'],
             state: params['state'],
-            zip: params['postal_code'],
+            zip: params['zip_code'],
             country: params['country'],
             phone: params['phone_number'],
             website: params['website']
