@@ -1,4 +1,5 @@
-Note: 
+Note:
+
 This repo houses the backend code for Hops Along. Please refer here for the project's frontend code and installation instructions. https://github.com/daveholmes88/HopsAlongFrontend
 
 Hops Along: 
