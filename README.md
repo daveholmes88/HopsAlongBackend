@@ -1,25 +1,28 @@
-# README
+Note: This repo houses the backend code for Hops Along. Please refer here for the project's frontend code and installation instructions. https://github.com/daveholmes88/HopsAlongFrontend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hops Along
+An application to find breweries in any location in the United States while rating, adding personal notes, and finding a global rating. 
 
-Things you may want to cover:
+Demo
+A video demo of Hops Along is available here https://www.youtube.com/watch?v=zJWot-iI_XQ&t=
 
-* Ruby version
+Usage and Features
+Hops Along has three main features, the ability to search breweries in any given city or state, the ability to find breweries near you, and the ability to view, rate any brewery, and edit any rating.
 
-* System dependencies
+Along with that, every user has the ability to create a new brewery and edit existing breweries. 
 
-* Configuration
+Backend Prerequisites
+Rails 6
+PostgreSQL
 
-* Database creation
+Backend Installation Overview
+After cloning this repo, first run the Rails server:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# TheBrewCrewBackend
+cd HopsAlongBackend
+bundle install
+Database installation:
+rails db:create
+rails db:migrate
+rails db:seed
+Run Rails server:
+rails s
