@@ -3,6 +3,17 @@ require 'jwt'
 class UsersController < ApplicationController
 
     def create
+        @user = User.create(username: params['username'], password: params['password'], email: params['email'])
+        payload = { user_id: @user.id }
+        token = JWT.encode(payload, 'secret', 'HS256')
+        if @user.valid?
+            render json: { id: @user.id, username: @user.username, token: token }, status: :created
+        else
+            render json: { error: 'failed to create user' }, status: :not_acceptable
+        end
+    end 
+
+    def update
         user = User.find_by(username: params['username'])
         if user
             payload = { user_id: user.id }
@@ -12,17 +23,10 @@ class UsersController < ApplicationController
             else 
                 render json: { error: 'Invalid Credentials' }, status: 401
             end
-        else  
-            @user = User.create(username: params['username'], password: params['password'])
-            payload = { user_id: @user.id }
-            token = JWT.encode(payload, 'secret', 'HS256')
-            if @user.valid?
-                render json: { id: @user.id, username: @user.username, token: token }, status: :created
-            else
-                render json: { error: 'failed to create user' }, status: :not_acceptable
-            end
-        end 
-    end
+        else
+            render json: { error: 'Invalid Credentials' }, status: 401
+        end
+    end 
 
     def index
         breweries = Brewery.all 
@@ -44,3 +48,4 @@ class UsersController < ApplicationController
     end
 
 end
+
