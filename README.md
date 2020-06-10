@@ -1,5 +1,3 @@
-Note:
-
 This repo houses the backend code for Hops Along. Please refer here for the project's frontend code and installation instructions. https://github.com/daveholmes88/HopsAlongFrontend
 
 Hops Along:
@@ -7,7 +5,6 @@ Hops Along:
 An application to find breweries in any location in the United States while rating, adding personal notes, and finding a global rating.
 
 Demo:
-
 A video demo of Hops Along is available here https://www.youtube.com/watch?v=zJWot-iI_XQ&t=
 
 Usage and Features:
@@ -39,5 +36,5 @@ rails db:migrate
 rails db:seed
 
 Run Rails server:
-
 rails s
+
