@@ -9,9 +9,9 @@
 require 'net/http'
 require 'open-uri'
 require 'json'
-User.destroy_all
-Rating.destroy_all
-Brewery.destroy_all
+# User.destroy_all
+# Rating.destroy_all
+# Brewery.destroy_all
 states1 = ["Alaska", "Alabama", "Arkansas",  "Arizona", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",  "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia",  "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"]
 states2 = ["Arizona", "California", "Colorado", "Connecticut", "Florida", "Georgia",  "Iowa", "Idaho", "Illinois", "Indiana", "Kentucky",  "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri",  "Montana", "North Carolina", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oregon", "Pennsylvania", "South Carolina",  "Tennessee", "Texas", "Virginia", "Vermont", "Washington", "Wisconsin"]
 states3 = ["Arizona", "California", "Colorado", "Florida", "Georgia",  "Illinois", "Indiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri",  "North Carolina", "New Jersey", "New York", "Ohio", "Oregon", "Pennsylvania",  "Tennessee", "Texas", "Virginia",  "Washington", "Wisconsin"]
@@ -21,8 +21,8 @@ states6 = ["California", "Colorado", "Florida",  "Illinois",   "Michigan",   "No
 states7 = ["California", "Colorado", "Florida", "Michigan", "North Carolina", "New York", "Ohio", "Pennsylvania", "Texas", "Washington"]
 states8 = ["California", "Colorado", "Michigan", "New York", "Pennsylvania", "Texas", "Washington"]
 states9 = ["California", "Colorado", "New York", "Washington"]
-states1.each do |state|
-    url = "https://api.openbrewerydb.org/breweries?per_page=50&by_state=#{state}&page=1"
+states2.each do |state|
+    url = "https://api.openbrewerydb.org/breweries?per_page=50&by_state=#{state}&page=2"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     response_array = JSON.parse(response.body)
@@ -41,4 +41,4 @@ states1.each do |state|
     end 
 end 
 
-User.create(username: bigdave, password: yodajams, email: 'phoenix1988@gmail.com', admin: true)
+User.create(username: 'bigdave', password: yodajams, email: 'phoenix1988@gmail.com', admin: true)
