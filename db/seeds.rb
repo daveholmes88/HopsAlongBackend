@@ -41,4 +41,4 @@ states1.each do |state|
     end 
 end 
 
-User.create(username: bigdave, password: yodajams, email: phoenix1988@gmail.com, admin: true)
+User.create(username: bigdave, password: yodajams, email: 'phoenix1988@gmail.com', admin: true)
