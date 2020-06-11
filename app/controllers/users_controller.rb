@@ -3,11 +3,11 @@ require 'jwt'
 class UsersController < ApplicationController
 
     def create
-        @user = User.create(username: params['username'], password: params['password'], email: params['email'])
+        user = User.create(username: params['username'], password: params['password'], email: params['email'])
         payload = { user_id: @user.id }
         token = JWT.encode(payload, 'secret', 'HS256')
-        if @user.valid?
-            render json: { id: @user.id, username: @user.username, token: token }, status: :created
+        if user.valid?
+            render json: { id: user.id, username: user.username, admin: user.admin, token: token }, status: :created
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
             payload = { user_id: user.id }
             token = JWT.encode(payload, 'secret', 'HS256')
             if user && user.authenticate(params[:password])
-                render json: { id: user.id, username: user.username, token: token }
+                render json: { id: user.id, username: user.username, admin: user.admin, token: token }
             else 
                 render json: { error: 'Invalid Credentials' }, status: 401
             end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         user_id = decoded_token[0]['user_id']
         user = User.find(user_id)
         if user 
-            render json: { user: {id: user.id, username: user.username}, ratings: ratings, breweries: breweries }
+            render json: { user: {id: user.id, username: user.username, admin: user.admin}, ratings: ratings, breweries: breweries }
         else 
             render json: { error: 'Invalid Credentials' }, status: 401
         end 
