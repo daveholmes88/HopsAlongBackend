@@ -21,8 +21,8 @@ states6 = ["California", "Colorado", "Florida",  "Illinois",   "Michigan",   "No
 states7 = ["California", "Colorado", "Florida", "Michigan", "North Carolina", "New York", "Ohio", "Pennsylvania", "Texas", "Washington"]
 states8 = ["California", "Colorado", "Michigan", "New York", "Pennsylvania", "Texas", "Washington"]
 states9 = ["California", "Colorado", "New York", "Washington"]
-states3.each do |state|
-    url = "https://api.openbrewerydb.org/breweries?per_page=50&by_state=#{state}&page=3"
+states4.each do |state|
+    url = "https://api.openbrewerydb.org/breweries?per_page=50&by_state=#{state}&page=4"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     response_array = JSON.parse(response.body)
