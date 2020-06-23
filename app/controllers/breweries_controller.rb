@@ -39,7 +39,7 @@ class BreweriesController < ApplicationController
             phone: params['brewery']['phone'], 
             website: params['brewery']['website'], 
             latitude: params['brewery']['latitude'],
-            longitude: params['brewery']['longitude']),
+            longitude: params['brewery']['longitude'])
         render json: brewery
     end 
 
