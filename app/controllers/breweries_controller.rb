@@ -9,17 +9,21 @@ class BreweriesController < ApplicationController
     def create 
         @brewery = {
             name: params['name'],
-            brewery_type: params['kind'],
+            brewery_type: params['brewery_type'],
             address: params['address'], 
             city: params['city'],
             state: params['state'],
-            zip: params['zip_code'],
+            zip: params['zip'],
+            longitude: params['longitude'],
+            latitude: params['latitude'],
             country: params['country'],
-            phone: params['phone_number'],
+            phone: params['phone'],
             website: params['website']
         }
         brewery = Brewery.create(@brewery)
         if brewery.valid? 
+            @admin = AdminNew.find(params['id'])
+            @admin.destroy
             render json: brewery
         else 
             render json: { error: 'failed to create brewery' }, status: :not_acceptable
