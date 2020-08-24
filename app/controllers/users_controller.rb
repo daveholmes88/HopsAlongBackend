@@ -42,6 +42,14 @@ class UsersController < ApplicationController
         end 
     end 
 
+    def destroy
+        user = User.find(params['id'])
+        user.update(admin: true)
+        users = User.all
+        byebug
+        render json: users
+    end 
+
     private
     def user_params
         params.require(:user).permit(:username, :password)
