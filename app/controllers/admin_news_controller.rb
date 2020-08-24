@@ -3,7 +3,8 @@ class AdminNewsController < ActionController::API
     def index
         admin_news = AdminNew.all
         users = User.all
-        render json: { breweries: admin_news, users: users }
+        admin_edits = AdminEdit.all
+        render json: { breweris: admin_news, users: users, edits: admin_edits }
     end 
 
     def create
