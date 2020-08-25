@@ -46,8 +46,7 @@ class UsersController < ApplicationController
         user = User.find(params['id'])
         user.update(admin: true)
         users = User.all
-        byebug
-        render json: users
+        render json: { users: users }
     end 
 
     private
