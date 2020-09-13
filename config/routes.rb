@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :breweries
   resources :admin_news
+  resources :admin_edits
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create]
