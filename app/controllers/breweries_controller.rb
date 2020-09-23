@@ -31,7 +31,7 @@ class BreweriesController < ApplicationController
     end 
 
     def update
-        brewery=Brewery.find(params['brewery']['id'])
+        brewery=Brewery.find(params['brewery']['brewery_id'])
         brewery.update(
             name: params['brewery']['name'],
             brewery_type: params['brewery']['brewery_type'],
@@ -44,7 +44,10 @@ class BreweriesController < ApplicationController
             website: params['brewery']['website'], 
             latitude: params['brewery']['latitude'],
             longitude: params['brewery']['longitude'])
-        render json: brewery
+        admin_edit = AdminEdit.find(params['brewery']['id'])
+        admin_edit.destroy
+        admin_edits = AdminEdit.all
+        render json: admin_edits 
     end 
 
     def destroy
