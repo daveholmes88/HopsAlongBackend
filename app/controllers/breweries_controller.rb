@@ -24,7 +24,8 @@ class BreweriesController < ApplicationController
         if brewery.valid? 
             @admin = AdminNew.find(params['id'])
             @admin.destroy
-            render json: brewery
+            admin = AdminNew.all
+            render json: admin
         else 
             render json: { error: 'failed to create brewery' }, status: :not_acceptable
         end 
@@ -44,10 +45,15 @@ class BreweriesController < ApplicationController
             website: params['brewery']['website'], 
             latitude: params['brewery']['latitude'],
             longitude: params['brewery']['longitude'])
-        admin_edit = AdminEdit.find(params['brewery']['id'])
-        admin_edit.destroy
-        admin_edits = AdminEdit.all
-        render json: admin_edits 
+        if brewery.valid? 
+            admin_edit = AdminEdit.find(params['brewery']['id'])
+            admin_edit.destroy
+            admin_edits = AdminEdit.all
+            render json: admin_edits 
+        else 
+            render json: { error: 'failed to edit brewery' }, status: :not_acceptable
+        end 
+        
     end 
 
     def destroy
